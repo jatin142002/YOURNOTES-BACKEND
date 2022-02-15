@@ -1,2 +1,2 @@
 # YOURNOTES - BACKEND
-This contains maintains backend of YOURNOTES.
+This maintains the backend of YOURNOTES.
