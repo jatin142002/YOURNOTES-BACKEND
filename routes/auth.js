@@ -14,9 +14,9 @@ const fetchuser = require('../middleware/fetchuser');
 // ROUTE 1 : Create a user using : POST "/api/auth/createuser" . NO login required
 router.post('/createuser' , [
 
-    body('email').isEmail(),
-    body('name').isLength({ min: 2 }),
-    body('name').isLength({ min: 5 }),
+    body('email' , "Enter a valid email").isEmail(),
+    body('name' , "Enter a valid name").isLength({ min: 2 }),
+    body('password' , "Password must have atleast 5 characters").isLength({ min: 5 }),
 
     ] , async(req , res)=>{
     console.log("api/auth/createuser is requested !");
@@ -29,7 +29,6 @@ router.post('/createuser' , [
     }
 
     // Check whether user with this email exists already
-
     try
     {
         let user = await User.findOne({email : req.body.email});
@@ -63,7 +62,6 @@ router.post('/createuser' , [
         console.error(error.message);
         res.status(500).send("Some error occured");
     }
-
     
 });
 
@@ -112,9 +110,7 @@ router.post('/login' , [
     {
         console.error(error.message);
         res.status(500).send("Internal servor error occured !!");
-    }
-
-    
+    }  
 });
 
 

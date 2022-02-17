@@ -6,13 +6,13 @@ connectToMongo();
 const app = express();
 const port = 5000;
 
-app.use(express.json()); // we need to use this middle ware if we want to use req.body
+app.use(express.json()); // we need to use this middleware if we want to use req.body
 
 // Availabel Routes
 
 app.get('/', (req, res) => {
   res.send('Hello Jimmy!')
-})
+});
 
 
 app.use('/api/auth', require('./routes/auth'));
